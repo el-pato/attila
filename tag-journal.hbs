@@ -29,11 +29,27 @@
 </header>
 
 <div id="index" class="container">
-
 	<main class="content" role="main">
-
-		<span>NO NO NO NO NO</span>>
-
+		{{#if @member}}
+			{{> loop }}
+		{{else}}
+		{{!-- if not signed in, show a message letting user know this area isn't for everyone --}}
+		<article class="{{post_class}}">
+			<div class="inner">
+				<section class="post-content">
+					{{!-- Modified from the default Ghost CTA https://github.com/TryGhost/Ghost/blob/main/core/frontend/helpers/tpl/content-cta.hbs --}}
+					{{{html}}}
+					<aside class="gh-post-upgrade-cta">
+						<div class="gh-post-upgrade-cta-content" style="background-color: var(--ghost-accent-color)">
+							<h2>These posts are invite only</h2>
+							<p>Some posts are only available to certain people. If you're one of those people, you can sign in:</p>
+							<a class="gh-btn" data-portal="signin" style="color: var(--ghost-accent-color)">Sign In</a>
+						</div>
+					</aside>
+				</section>
+			</div>
+		</article>
+		{{/if}}
 	</main>
 
 </div>
